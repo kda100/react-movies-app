@@ -14,22 +14,21 @@ function MoviesPage(props) {
     error: null,
   });
 
-  async function fetchMovies() {
-    setMovieState({ isLoading: true, moviesList: [], error: null });
-    let error = null;
-    let moviesList = [];
-    try {
-      moviesList = await getMoviesList(props.pageRoute);
-    } catch {
-      error = "An Error Has Occurred";
-    }
-    setMovieState({ isLoading: false, moviesList: moviesList, error: error });
-  }
-
   useEffect(() => {
     navigationContext.setCurrentRoute(props.pageRoute);
+    async function fetchMovies() {
+      setMovieState({ isLoading: true, moviesList: [], error: null });
+      let error = null;
+      let moviesList = [];
+      try {
+        moviesList = await getMoviesList(props.pageRoute);
+      } catch {
+        error = "An Error Has Occurred";
+      }
+      setMovieState({ isLoading: false, moviesList: moviesList, error: error });
+    }
     fetchMovies();
-  }, [props.pageRoute]);
+  }, [props.pageRoute, navigationContext]);
 
   if (moviesState.isLoading) {
     return <Loading />;
