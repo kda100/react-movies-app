@@ -3,16 +3,6 @@ import axios from "axios";
 const baseUrl = "https://api.themoviedb.org/3/movie";
 const baseImageUrl = "https://image.tmdb.org/t/p/original";
 
-const singleMovieProperties = [
-  "id",
-  "adult",
-  "poster_path",
-  "homepage",
-  "title",
-  "overview",
-  "release_date",
-  "vote_average",
-];
 const multiMovieProperties = [
   "id",
   "overview",
