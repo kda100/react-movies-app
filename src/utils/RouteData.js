@@ -6,4 +6,4 @@ class RouteData {
   }
 }
 
-module.exports = RouteData;
+export default RouteData;
