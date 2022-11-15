@@ -19,8 +19,8 @@ function reduceMovieData(movieData, selectedProperties) {
       } else {
         newMovieData[key] = movieData[key];
       }
-      return newMovieData;
     }
+    return newMovieData;
   }, {});
 }
 
