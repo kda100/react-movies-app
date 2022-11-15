@@ -15,9 +15,7 @@ function MovieItem(props) {
             Rating: {props.rating}
           </h6>
           <p className={classes.pvarchiveText}>{props.overview}</p>
-          <a href="#" class="btn btn-primary mt-auto">
-            More Info...
-          </a>
+          <button class="btn btn-primary mt-auto">More Info...</button>
         </div>
       </div>
     </div>
