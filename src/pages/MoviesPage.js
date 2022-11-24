@@ -18,7 +18,7 @@ function MoviesPage(props) {
     navigationContext.setCurrentRoute(props.pageRoute);
     async function fetchMovies() {
       setMovieState((prevState) => {
-        return { ...moviesState, isLoading: true };
+        return { ...prevState, isLoading: true };
       });
       let error = null;
       let moviesList = [];
