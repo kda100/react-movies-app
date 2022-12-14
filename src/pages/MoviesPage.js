@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
 import { getMoviesList } from "../services/moviesApi";
@@ -8,44 +8,39 @@ import { useContext } from "react";
 
 function MoviesPage(props) {
   const navigationContext = useContext(NavigationContext);
-  const [moviesState, setMovieState] = useState({
-    isLoading: true,
-    moviesList: [],
-    error: null,
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [moviesList, setMoviesList] = useState([]);
+  const [error, setError] = useState(null);
+
+  const fetchMovies = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      setMoviesList(await getMoviesList(props.pageRoute));
+    } catch {
+      setError("An Error Has Occurred");
+    }
+    setIsLoading(false);
+  }, [props.pageRoute]);
 
   useEffect(() => {
     navigationContext.setCurrentRoute(props.pageRoute);
-    async function fetchMovies() {
-      setMovieState((prevState) => {
-        return { ...prevState, isLoading: true };
-      });
-      let error = null;
-      let moviesList = [];
-      try {
-        moviesList = await getMoviesList(props.pageRoute);
-      } catch {
-        error = "An Error Has Occurred";
-      }
-      setMovieState({ isLoading: false, moviesList: moviesList, error: error });
-    }
     fetchMovies();
-  }, [props.pageRoute, navigationContext]);
+  }, [props.pageRoute, navigationContext, fetchMovies]);
 
-  if (moviesState.isLoading) {
+  if (isLoading) {
     return <Loading />;
   }
 
-  if (moviesState.error != null) {
-    return <Error message={moviesState.error} />;
+  if (error != null) {
+    return <Error message={error} />;
   }
 
-  console.log(moviesState.moviesList);
+  console.log(moviesList);
 
   return (
     <div className="container">
       <h1 className="text-center">{props.pageTitle}</h1>
-      <MoviesList moviesList={moviesState.moviesList} />
+      <MoviesList moviesList={moviesList} />
     </div>
   );
 }
