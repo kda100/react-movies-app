@@ -18,6 +18,11 @@ const NavigationContext = createContext({
 export function NavigationContextProvider(props) {
   const [currentRoute, setCurrentRoute] = useState(nowPlaying.pageRoute);
 
+  /**
+   * Uses pageRoute as argument to determine if given page route is currently being viewed.
+   * @param {String} pageRoute
+   * @returns {bool} whether page is currently on given route.
+   */
   function isCurrentRoute(pageRoute) {
     return pageRoute === currentRoute;
   }
