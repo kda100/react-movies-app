@@ -1,4 +1,9 @@
+import React from "react";
 import classes from "./MovieItem.module.css";
+
+/**
+ * * component to create each movie item card using bootstrap styling.
+ */
 
 function MovieItem(props) {
   return (
@@ -15,7 +20,7 @@ function MovieItem(props) {
             Rating: {props.rating}
           </h6>
           <p className={classes.pvarchiveText}>{props.overview}</p>
-          <button class="btn btn-primary mt-auto">More Info...</button>
+          <button className="btn btn-primary mt-auto">More Info...</button>
         </div>
       </div>
     </div>

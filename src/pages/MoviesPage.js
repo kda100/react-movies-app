@@ -6,24 +6,29 @@ import MoviesList from "../components/movies/MoviesList";
 import NavigationContext from "../store/NavigationContext";
 import { useContext } from "react";
 
+/**
+ * Component to control state and content of each movies page.
+ */
+
 function MoviesPage(props) {
   const navigationContext = useContext(NavigationContext);
   const [isLoading, setIsLoading] = useState(true);
   const [moviesList, setMoviesList] = useState([]);
   const [error, setError] = useState(null);
 
+  //function to set movies data in moviesList state
   const fetchMovies = useCallback(async () => {
     setIsLoading(true);
     try {
-      setMoviesList(await getMoviesList(props.pageRoute));
+      setMoviesList(await getMoviesList(props.pageRoute)); //sets movies data
     } catch {
-      setError("An Error Has Occurred");
+      setError("An Error Has Occurred"); //sets error
     }
     setIsLoading(false);
   }, [props.pageRoute]);
 
   useEffect(() => {
-    navigationContext.setCurrentRoute(props.pageRoute);
+    navigationContext.setCurrentRoute(props.pageRoute); //whens pageRoute changes a different movie route is set.
     fetchMovies();
   }, [props.pageRoute, navigationContext, fetchMovies]);
 
@@ -34,8 +39,6 @@ function MoviesPage(props) {
   if (error != null) {
     return <Error message={error} />;
   }
-
-  console.log(moviesList);
 
   return (
     <div className="container">

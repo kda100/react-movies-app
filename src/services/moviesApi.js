@@ -9,8 +9,14 @@ const multiMovieProperties = [
   "poster_path",
   "title",
   "vote_average",
-];
+]; //properties to filter when fetching multiple movies
 
+/**
+ *
+ * @param {Object} movieData
+ * @param {Array<String>} selectedProperties
+ * @returns {{id: Number, overview: String, poster_path: String, title:String, vote_average: Number}}
+ */
 function reduceMovieData(movieData, selectedProperties) {
   return selectedProperties.reduce(function (newMovieData, key) {
     if (key in movieData) {
@@ -24,6 +30,11 @@ function reduceMovieData(movieData, selectedProperties) {
   }, {});
 }
 
+/**
+ * Takes in a request and returns a list of movie data objects
+ * @param {String} request
+ * @returns {Array<{id: Number, overview: String, poster_path: String, title:String, vote_average: Number}>}
+ */
 export const getMoviesList = async (request) => {
   const res = await axios.get(
     `${baseUrl}${request}?api_key=${process.env.REACT_APP_API_KEY}`

@@ -1,11 +1,19 @@
 import { createContext, useState } from "react";
 import { nowPlaying } from "../routing/movieRoutesData";
 
+//creation of navigation context.
+
 const NavigationContext = createContext({
   currentRoute: nowPlaying.pageRoute,
   setCurrentRoute: (pageRoute) => {},
   isCurrentRoute: (pageRoute) => {},
 });
+
+/**
+ *
+ * @param {*} props
+ * @returns
+ */
 
 export function NavigationContextProvider(props) {
   const [currentRoute, setCurrentRoute] = useState(nowPlaying.pageRoute);

@@ -1,5 +1,7 @@
 import RouteData from "../utils/RouteData";
 
+//Different routes data objects.
+
 export const nowPlaying = new RouteData(
   "/now_playing",
   "Now In Cinema",

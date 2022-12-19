@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import routes from "../../routing/movieRoutesData";
 import NavigationContext from "../../store/NavigationContext";
 
+/**
+ * Navigation Bar of SPA
+ */
+
 function NavBar() {
   const navigationContext = useContext(NavigationContext);
   return (
@@ -21,6 +25,7 @@ function NavBar() {
           >
             {routes.map((route) => (
               <Nav.Link
+                key={route.pageRoute}
                 as={Link}
                 to={route.pageRoute}
                 active={navigationContext.isCurrentRoute(route.pageRoute)}

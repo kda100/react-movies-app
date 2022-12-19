@@ -6,6 +6,10 @@ import { nowPlaying } from "./routing/movieRoutesData";
 import { NavigationContextProvider } from "./store/NavigationContext";
 import MoviesPage from "./pages/MoviesPage";
 
+/**
+ * Top level app component
+ */
+
 function App() {
   return (
     <NavigationContextProvider>
@@ -14,6 +18,7 @@ function App() {
           <Routes>
             {routes.map((route) => (
               <Route
+                key={route.pageRoute}
                 path={route.pageRoute}
                 element={
                   <MoviesPage
