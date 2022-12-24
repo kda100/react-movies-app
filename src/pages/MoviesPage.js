@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Fragment } from "react";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
 import { getMoviesList } from "../services/moviesApi";
@@ -41,10 +41,10 @@ function MoviesPage(props) {
   }
 
   return (
-    <div className="container">
+    <Fragment>
       <h1 className="text-center">{props.pageTitle}</h1>
       <MoviesList moviesList={moviesList} />
-    </div>
+    </Fragment>
   );
 }
 

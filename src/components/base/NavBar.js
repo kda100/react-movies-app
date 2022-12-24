@@ -2,9 +2,9 @@ import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
 import routes from "../../routing/movieRoutesData";
 import NavigationContext from "../../store/NavigationContext";
+import { Link } from "react-router-dom";
 
 /**
  * Navigation Bar of SPA
