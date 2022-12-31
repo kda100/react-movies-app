@@ -14,8 +14,8 @@ const multiMovieProperties = [
 /**
  *
  * @param {Object} movieData
- * @param {Array<String>} selectedProperties
- * @returns {{id: Number, overview: String, poster_path: String, title:String, vote_average: Number}} movie object
+ * @param {Array<string>} selectedProperties
+ * @returns {{id: number, overview: string, poster_path: string, title:string, vote_average: number}} movie object
  */
 function reduceMovieData(movieData, selectedProperties) {
   return selectedProperties.reduce(function (newMovieData, key) {
@@ -32,8 +32,8 @@ function reduceMovieData(movieData, selectedProperties) {
 
 /**
  * Takes in a request and returns a list of movie data objects
- * @param {String} request
- * @returns {Array<{id: Number, overview: String, poster_path: String, title:String, vote_average: Number}>} list of movie objects
+ * @param {string} request
+ * @returns {Array<{id: number, overview: string, poster_path: string, title:string, vote_average: number}>} list of movie objects
  */
 export const getMoviesList = async (request) => {
   const res = await axios.get(

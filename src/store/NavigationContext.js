@@ -20,8 +20,8 @@ export function NavigationContextProvider(props) {
 
   /**
    * Uses pageRoute as argument to determine if given page route is currently being viewed.
-   * @param {String} pageRoute
-   * @returns {bool} whether page is currently on given route.
+   * @param {string} pageRoute
+   * @returns {boolean} whether page is currently on given route.
    */
   function isCurrentRoute(pageRoute) {
     return pageRoute === currentRoute;
